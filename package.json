@@ -1,0 +1,29 @@
+{
+  "name": "sciencewebsite",
+  "version": "1.0.0",
+  "description": "Science Website for education",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanmc113/ScienceWebsite.git"
+  },
+  "author": "Ryan McUmber",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryanmc113/ScienceWebsite/issues"
+  },
+  "homepage": "https://github.com/ryanmc113/ScienceWebsite#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
