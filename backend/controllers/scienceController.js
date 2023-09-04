@@ -17,7 +17,11 @@ const setLearningGoals = aysncHandler(async (req, res) => {
         res.status(400)
         throw new Error('Plase add text field!!!')
     }
-    res.status(200).json({message: 'Set learning goal!'})
+
+    const goal = await Goal.create({
+        text: req.body.text
+    })
+    res.status(200).json(goal)
 })
 
 //@desc update learning goal
@@ -25,14 +29,34 @@ const setLearningGoals = aysncHandler(async (req, res) => {
 //@access private
 const updateLearningGoals = aysncHandler(async (req, res) => {
     
-    res.status(200).json({message: `Update Learning Goal ${req.params.id}`})
+    const goal = await Goal.findById(req.params.id);
+
+    if(!goal){
+        res.status(400)
+        throw new Error('Goal not found')
+    }
+
+    const goalUpdated = await Goal.findByIdAndUpdate(req.params.id, req.body,{
+        new:true
+    })
+    res.status(200).json(goalUpdated)
 })
 
 //@desc delete learning goal
 // @route Delete api/science/:id
 //@access private
 const deleteLearningGoals = aysncHandler(async (req, res) => {
-    res.status(200).json({message: `Delete Learning Goal ${req.params.id}`})
+     const goal = await Goal.findById(req.params.id);
+
+     if(!goal){
+        res.status(400);
+        throw new Error('Goal was not found');
+     }
+
+    //await goal.remove()
+    await Goal.findByIdAndDelete(req.params.id)
+
+    res.status(200).json({ id: req.params.id })
 })
 
 module.exports = {
