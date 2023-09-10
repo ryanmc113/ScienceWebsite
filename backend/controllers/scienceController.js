@@ -13,6 +13,7 @@ const getLearningGoals = aysncHandler(async (req, res) => {
 // @route Post api/science
 //@access private
 const setLearningGoals = aysncHandler(async (req, res) => {
+    
     if(!req.body.text){
         res.status(400)
         throw new Error('Plase add text field!!!')
