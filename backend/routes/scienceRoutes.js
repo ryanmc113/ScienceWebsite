@@ -6,8 +6,10 @@ const { getLearningGoals,
         deleteLearningGoals } 
         = require('../controllers/scienceController')
 
-router.route('/').get(getLearningGoals).post(setLearningGoals);
+const { protect } = require('../middleware/authMiddleware')
 
-router.route('/:id').delete(deleteLearningGoals).put(updateLearningGoals)
+router.route('/').get(protect, getLearningGoals).post(protect, setLearningGoals);
+
+router.route('/:id').delete(protect, deleteLearningGoals).put(protect, updateLearningGoals)
 
 module.exports = router
