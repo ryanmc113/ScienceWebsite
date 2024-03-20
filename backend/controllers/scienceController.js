@@ -5,6 +5,7 @@ const User = require('../models/userModel');
 //@desc get learning goals
 // @route GET api/science
 //@access private
+//this is to test out github
 const getLearningGoals = aysncHandler(async (req, res) => {
     const goals = await Goal.find({ user: req.user.id})
     res.status(200).json({goals})
